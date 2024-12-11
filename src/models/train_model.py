@@ -14,6 +14,12 @@ from sklearn import metrics
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix, ConfusionMatrixDisplay, roc_curve, auc
 from sklearn.preprocessing import StandardScaler
+from sklearn.compose import make_column_transformer
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.pipeline import make_pipeline
+from sklearn.metrics.pairwise import euclidean_distances
+from sklearn import set_config
+from sklearn.naive_bayes import GaussianNB
 
 depth_limit = 5
 
