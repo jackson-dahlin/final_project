@@ -1,17 +1,8 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 # All required libraries are imported here for you.
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn import metrics
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.preprocessing import StandardScaler
 
 # Create the log dataframe
 log_blood = blood.copy()
@@ -34,4 +25,4 @@ log_blood['total number of donations'] = log_blood['total number of donations'].
 log_blood['total blood donated (in c.c.)'] = log_blood['total blood donated (in c.c.)'].fillna(0)
 log_blood['months since first donation'] = log_blood['months since first donation'].fillna(0)
 
-return log_blood
+log_blood
