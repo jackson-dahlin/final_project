@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[2]:
-
-
 #All required libraries are imported here for you.
 import pandas as pd
 import numpy as np
@@ -40,8 +34,21 @@ plt.ylabel('True Labels')
 plt.title('Naive Bayes Confusion Matrix')
 plt.show()
 
+# Plot log knn data using Seaborn
+plt.figure(figsize=(8, 6))
+sns.heatmap(lknn_cm, annot=True, fmt='d', cmap='Greens', xticklabels=['Negative', 'Positive'], yticklabels=['Negative', 'Positive'])
+plt.xlabel('Predicted Labels')
+plt.ylabel('True Labels')
+plt.title('KNN Confusion Matrix')
+plt.show()
 
-# In[10]:
+# Plot log nb data using Seaborn
+plt.figure(figsize=(8, 6))
+sns.heatmap(lnb_cm, annot=True, fmt='d', cmap='Greens', xticklabels=['Negative', 'Positive'], yticklabels=['Negative', 'Positive'])
+plt.xlabel('Predicted Labels')
+plt.ylabel('True Labels')
+plt.title('Naive Bayes Confusion Matrix')
+plt.show()
 
 
 # Plot the decision tree
@@ -103,6 +110,44 @@ plt.ylim([0.0, 1.0])
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('Naive Bayes ROC Curve')
+plt.legend(loc = 'lower right')
+plt.grid()
+plt.show()
+
+# Calculate the FPR, TPR, and thresholds for log kBB
+fpr, tpr, thresholds = roc_curve(y_valid, lknn_pred_valid)
+
+# Calculate the AUC (Area Under the Curve)
+roc_auc = auc(fpr, tpr)
+
+# Plot the ROC curve
+plt.figure()
+plt.plot(fpr, tpr, color = 'navy', label = f'ROC curve (AUC = {roc_auc:.2f})')
+plt.plot([0, 1], [0, 1], color = 'black')  # Diagonal line
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.0])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Log k-NN ROC Curve')
+plt.legend(loc = 'lower right')
+plt.grid()
+plt.show()
+
+# Calculate the FPR, TPR, and thresholds
+fpr, tpr, thresholds = roc_curve(y_valid, lnb_pred_valid)
+
+# Calculate the AUC (Area Under the Curve)
+roc_auc = auc(fpr, tpr)
+
+# Plot the ROC curve
+plt.figure()
+plt.plot(fpr, tpr, color = 'red', label = f'ROC curve (AUC = {roc_auc:.2f})')
+plt.plot([0, 1], [0, 1], color = 'black')  # Diagonal line
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.0])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Log Naive Bayes ROC Curve')
 plt.legend(loc = 'lower right')
 plt.grid()
 plt.show()
