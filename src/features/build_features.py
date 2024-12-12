@@ -19,3 +19,10 @@ features = ['months since last donation', 'total number of donations',
 
 # Labels
 y = blood['Donated']
+
+np.random.seed(123)
+X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size = 0.3)
+X_valid, X_test, y_valid, y_test = train_test_split(X_temp, y_temp, test_size = 0.33)
+
+X1_train, X1_temp, y1_train, y1_temp = train_test_split(X1, y1, test_size = 0.3)
+X1_valid, X1_test, y1_valid, y1_test = train_test_split(X1_temp, y1_temp, test_size = 0.33)
